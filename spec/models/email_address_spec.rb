@@ -10,6 +10,5 @@ RSpec.describe EmailAddress, :type => :model do
   it 'is invalid without a address' do
     email_address.address = nil
     expect(email_address).not_to be_valid
-     
   end
 end
