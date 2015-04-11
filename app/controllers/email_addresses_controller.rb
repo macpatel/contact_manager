@@ -1,24 +1,9 @@
 class EmailAddressesController < ApplicationController
   before_action :set_email_address, only: [:show, :edit, :update, :destroy]
 
-  # GET /email_addresses
-  # GET /email_addresses.json
-  def index
-    @email_addresses = EmailAddress.all
-  end
-
-  # GET /email_addresses/1
-  # GET /email_addresses/1.json
-  def show
-  end
-
   # GET /email_addresses/new
   def new
     @email_address = EmailAddress.new(econtact_id: params[:econtact_id], econtact_type: params[:econtact_type])
-  end
-
-  # GET /email_addresses/1/edit
-  def edit
   end
 
   # POST /email_addresses
