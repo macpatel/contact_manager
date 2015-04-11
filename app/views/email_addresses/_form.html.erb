@@ -16,8 +16,11 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :person_id %><br>
-    <%= f.hidden_field :person_id %>
+    <%= f.label :econtact_id %><br>
+    <%= f.hidden_field :econtact_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :econtact_type %>
   </div>
   <div class="actions">
     <%= f.submit %>

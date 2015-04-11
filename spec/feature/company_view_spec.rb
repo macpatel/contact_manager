@@ -54,4 +54,31 @@ describe 'the company view', type: :feature do
     	expect(page).not_to have_content(old_number)
     end
   end
+
+  describe 'EmailAddress' do
+    before(:each) do
+      company.email_addresses.create(address: "sublime@gmail.com")
+      company.email_addresses.create(address: "sublime1@gmail.com")
+      visit company_path(company)
+    end
+    
+    it 'shows the email address' do
+      company.email_addresses.each do |email|
+        expect(page).to have_content(email.address)
+      end
+    end
+    
+    it 'has an add email address link' do
+      expect(page).to have_link('Add Email Address', href: new_email_address_path(econtact_id: company.id, econtact_type: 'Company'))
+    end
+    
+    it 'adds new email address' do
+      page.click_link('Add Email Address')
+      page.fill_in('Address', with: 'm@c@gmail.com')
+      page.click_button('Create Email address')
+        expect(current_path).to eq(company_path(company))
+        expect(page).to have_content('m@c@gmail.com')
+    end
+  end
+
 end
