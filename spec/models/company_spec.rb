@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Company, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:company) { Company.create(name:'ABC') }
+  
+  it 'is valid' do
+      expect(company).to be_valid
+  end
+  
+  it 'is invalid without name' do
+      company.name = nil
+      expect(company).not_to be_valid
+  end
 end
