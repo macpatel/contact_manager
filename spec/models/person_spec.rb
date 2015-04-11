@@ -11,7 +11,8 @@ RSpec.describe Person, :type => :model do
 	end
 
 	it 'has an array of phone numbers' do
-  	expect(person.phone_numbers).to eq([])
+  	person.phone_numbers.build(number: '555-8888')
+    expect(person.phone_numbers.map(&:number)).to eq(['555-8888'])
 	end
 
   it 'is invalid without a first name' do
@@ -24,8 +25,9 @@ RSpec.describe Person, :type => :model do
   	expect(person).not_to be_valid
   end
   
-  it 'has an array of phone numbers' do
-  	expect(person.email_addresses).to eq([])
+  it 'has an array of email addresses' do
+    person.email_addresses.build(address: 'me@example.com')
+    expect(person.email_addresses.map(&:address)).to eq(['me@example.com'])
 	end
 
 end
