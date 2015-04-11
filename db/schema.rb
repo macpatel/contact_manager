@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20150411065851) do
     t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "econtact_id"
-    t.string   "econtact_type"
+    t.integer  "contact_id"
+    t.string   "contact_type"
   end
 
   create_table "people", force: true do |t|

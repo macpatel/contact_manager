@@ -3,7 +3,11 @@ class EmailAddressesController < ApplicationController
 
   # GET /email_addresses/new
   def new
-    @email_address = EmailAddress.new(econtact_id: params[:econtact_id], econtact_type: params[:econtact_type])
+    @email_address = EmailAddress.new(contact_id: params[:contact_id], contact_type: params[:contact_type])
+  end
+
+  # GET /email_addresses/1/edit
+  def edit
   end
 
   # POST /email_addresses
@@ -13,8 +17,8 @@ class EmailAddressesController < ApplicationController
 
     respond_to do |format|
       if @email_address.save
-        format.html { redirect_to @email_address.econtact, notice: 'Email address was successfully created.' }
-        format.json { render :show, status: :created, location: @email_address.econtact }
+        format.html { redirect_to @email_address.contact, notice: 'Email address was successfully created.' }
+        format.json { render :show, status: :created, location: @email_address.contact }
       else
         format.html { render :new }
         format.json { render json: @email_address.errors, status: :unprocessable_entity }
@@ -54,6 +58,6 @@ class EmailAddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_address_params
-      params.require(:email_address).permit(:address, :person_id, :econtact_id, :econtact_type)
+      params.require(:email_address).permit(:address, :person_id, :contact_id, :contact_type)
     end
 end
