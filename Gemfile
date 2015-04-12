@@ -46,4 +46,6 @@ group :development do
 end
 
 gem 'unicorn'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
